@@ -9,6 +9,8 @@ body {
   --seconday-font: "Raleway", sans-serif;
   --primary-font-color: #434455;
   --secondary-font-color: #2e2f42;
+  --tra: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --trabg: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .container {
@@ -106,7 +108,7 @@ ul {
   color: #2e2f42;
   letter-spacing: 0.02em;
   padding-top: 24px;
-  padding-bottom: 28px;
+  transition: var(--tra);
 }
 
 .active {
@@ -121,7 +123,7 @@ ul {
   border-radius: 2px;
   height: 4px;
   width: 100%;
-  bottom: 0;
+  bottom: -28px;
   left: 0;
 }
 
@@ -129,6 +131,7 @@ ul {
   font-style: normal;
   color: var(--primary-font-color);
   letter-spacing: 0.02em;
+  transition: var(--tra);
 }
 
 .menu-link:hover,
@@ -189,6 +192,7 @@ ul {
   border: none;
   justify-content: center;
   margin: 0 auto;
+  transition: var(--trabg);
 }
 
 .btn {
@@ -206,6 +210,8 @@ ul {
   font-family: inherit;
   background: #f4f4fd;
   padding: 12px 24px;
+  transition: var(--trabg) color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn:hover,
@@ -218,6 +224,8 @@ btn:focus {
 .modal-btn:focus {
   background-color: #404bbf;
   color: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
 }
 
 /* ======================= BENEFITS ====================== */
@@ -237,9 +245,6 @@ btn:focus {
 .benefits-list {
   display: flex;
   gap: 24px;
-}
-
-.benefits-item {
 }
 
 .benefits-description {
@@ -359,6 +364,7 @@ btn:focus {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: var(--trabg);
 }
 
 .team-soc-link:is(:hover, :focus) {
@@ -405,10 +411,13 @@ btn:focus {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .customers-icon {
   fill: #8e8f99;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .customers-link:is(:hover, :focus) {
@@ -490,6 +499,7 @@ btn:focus {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: var(--trabg);
 }
 
 .social-media-icon {
@@ -516,15 +526,6 @@ btn:focus {
   gap: 24px;
 }
 
-.portfolio-button:is(:hover, :focus) {
-  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08),
-    0px 2px 2px rgba(0, 0, 0, 0.12);
-  border-radius: 4px;
-  background-color: #404bbf;
-  color: #ffffff;
-  border-color: #404bbf;
-}
-
 .portfolio-title {
   font-weight: 500;
   font-size: 20px;
@@ -548,11 +549,16 @@ btn:focus {
 
 .portfolio-item {
   width: calc((100% - 48px) / 3);
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .portfolio-item:is(:hover, :focus) {
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
     0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+}
+
+.portfolio-item:hover .portfolio-top-text {
+  transform: translateY(0%);
 }
 
 .portfolio-description {
@@ -575,4 +581,71 @@ btn:focus {
   font-family: inherit;
   background: #f4f4fd;
   padding: 12px 24px;
+  transition: var(--trabg), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.portfolio-button:is(:hover, :focus) {
+  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08),
+    0px 2px 2px rgba(0, 0, 0, 0.12);
+  background-color: #404bbf;
+  color: #ffffff;
+  border-color: #404bbf;
+}
+
+.portfolio-top-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-top-text {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  font-family: var(--primary-font);
+  background: #4d5ae5;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: #f4f4fd;
+  padding-left: 32px;
+  padding-right: 32px;
+  padding-top: 40px;
+  transform: translateY(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* .backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 677px;
+  background: rgba(46, 47, 66, 0.4);
+}
+
+.modal {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 408px;
+  height: 576px;
+  background: #FCFCFC;
+box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
+border-radius: 4px;
+padding: 15px;
+}
+
+.modal-close-btn {
+  position: absolute;
+  width: 24px;
+height: 24px;
+left: 876px;
+top: 112px;
+background: #E7E9FC;
+border: 1px solid rgba(0, 0, 0, 0.1);
+border-radius: 50%;
+} */
