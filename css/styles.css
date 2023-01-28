@@ -617,35 +617,72 @@ btn:focus {
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* .backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 677px;
-  background: rgba(46, 47, 66, 0.4);
-}
+/* ============== MODAL ============== */
 
+.backdrop {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(46, 47, 66, 0.4);
+  top: 0;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
 .modal {
-  position: relative;
+  position: absolute;
+  width: 408px;
+  min-height: 576px;
+  background: #fcfcfc;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
-  width: 408px;
-  height: 576px;
-  background: #FCFCFC;
-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
-border-radius: 4px;
-padding: 15px;
+  transform: translate(-50%, -50%) rotate(0deg);
+  padding: 15px;
+  transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.modal-close-btn {
+.backdrop.is-hidden .modal {
+  transform: translate(-180%, -260%) rotate(-180deg);
+}
+
+.modal-close-button {
   position: absolute;
   width: 24px;
-height: 24px;
-left: 876px;
-top: 112px;
-background: #E7E9FC;
-border: 1px solid rgba(0, 0, 0, 0.1);
-border-radius: 50%;
-} */
+  height: 24px;
+  right: 20px;
+  top: 20px;
+  border-radius: 50%;
+  background: #e7e9fc;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-icon-x {
+  fill: #000000;
+  background-color: #ffffff;
+  display: block;
+  margin: 0 auto;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.modal-close-button:is(:hover, :focus) {
+  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08),
+    0px 2px 2px rgba(0, 0, 0, 0.12);
+  background-color: #404bbf;
+}
+
+.modal-close-button:is(:hover, :focus) .modal-icon-x {
+  background-color: #404bbf;
+  fill: #ffffff;
+}
